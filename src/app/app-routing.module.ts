@@ -1,14 +1,18 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AuthGuard } from './auth.guard';
 import { EmployeeComponent } from './employee/employee.component';
 import { LoginComponent } from './login/login.component';
+import { LogoutComponent } from './logout/logout.component';
 
 const routes: Routes = [
+  { path: '', component: EmployeeComponent, canActivate: [AuthGuard] },
   {
-    path: '',
+    path: 'login',
     pathMatch: 'full',
     component: LoginComponent,
   },
+  { path: 'logout', component: LogoutComponent },
   {
     path: 'all-employee',
     pathMatch: 'full',

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
@@ -12,10 +13,15 @@ import { EmployeeFormComponent } from './employee/employee-form/employee-form.co
 import { AppRoutingModule } from './app-routing.module';
 import { LoginComponent } from './login/login.component';
 import { HeaderComponent } from './header/header.component';
+import { HttpClientModule } from '@angular/common/http';
+import { AuthService } from './services/auth.service';
+import { LogoutComponent } from './logout/logout.component';
 
 @NgModule({
   imports: [
     BrowserModule,
+    CommonModule,
+    HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
     StoreModule.forRoot({ employee: addEmployeeReducer }),
@@ -27,8 +33,10 @@ import { HeaderComponent } from './header/header.component';
     EmployeeComponent,
     EmployeeFormComponent,
     LoginComponent,
+    LogoutComponent,
     HeaderComponent,
   ],
+  providers: [AuthService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

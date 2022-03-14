@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -10,7 +11,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private authService: AuthService
   ) {}
   public loginForm: FormGroup;
   public formWasSubmitted: boolean;
@@ -33,9 +35,24 @@ export class LoginComponent implements OnInit {
   }
   loginFormSubmit() {
     this.formWasSubmitted = true;
-    console.log(this.loginForm.invalid);
+
     if (this.loginForm.valid) {
-      this.router.navigate(['/all-employee']);
+      // localStorage.setItem('Users', JSON.stringify(this.loginForm.value));
+      // const user = this.authService.authUser(this.loginForm.value);
+      // console.log(user);
+      // if (user) {
+      //   localStorage.setItem('isLoggin', 'true');
+      //   this.router.navigate(['/all-employee']);
+      // } else {
+      //   localStorage.setItem('isLoggin', 'false');
+      //   console.log('Login Failed');
+      //   this.router.navigate(['/']);
+      // }
+      this.authService.authUser(this.loginForm.value).subscribe((data) => {
+        console.log('Is Login Success: ' + data);
+
+        if (data) this.router.navigate(['/all-employee']);
+      });
     }
   }
 }
