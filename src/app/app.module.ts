@@ -9,6 +9,9 @@ import { StoreModule } from '@ngrx/store';
 import { addEmployeeReducer } from './reducers/employee.reducer';
 import { EmployeeComponent } from './employee/employee.component';
 import { EmployeeFormComponent } from './employee/employee-form/employee-form.component';
+import { AppRoutingModule } from './app-routing.module';
+import { LoginComponent } from './login/login.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   imports: [
@@ -16,12 +19,15 @@ import { EmployeeFormComponent } from './employee/employee-form/employee-form.co
     FormsModule,
     ReactiveFormsModule,
     StoreModule.forRoot({ employee: addEmployeeReducer }),
+    AppRoutingModule,
   ],
   declarations: [
     AppComponent,
     HelloComponent,
     EmployeeComponent,
     EmployeeFormComponent,
+    LoginComponent,
+    HeaderComponent,
   ],
   bootstrap: [AppComponent],
 })

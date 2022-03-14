@@ -1,2 +1,10 @@
 /* Add application styles & imports to this file! */
-@import "node_modules/bootstrap/dist/css/bootstrap.min.css";
+@import 'node_modules/bootstrap/dist/css/bootstrap.min.css';
+.default-bg {
+  background-color: #04aa6d;
+  color: white;
+  padding: 10px 0;
+}
+.error {
+  color: red;
+}
