@@ -18,6 +18,7 @@ import { tap, delay } from 'rxjs/operators';
 export class AuthService {
   constructor(private httpClient: HttpClient) {}
   isUserLoggedIn: boolean = false;
+
   authUser(user: any): Observable<any> {
     this.isUserLoggedIn =
       user.email == 'admin@gmail.com' && user.pwd == 'admin';
@@ -27,7 +28,6 @@ export class AuthService {
     );
     console.log(user);
     return of(this.isUserLoggedIn).pipe(
-      delay(100),
       tap((val) => {
         console.log('Is User Authentication is successful: ' + val);
       })
