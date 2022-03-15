@@ -17,6 +17,7 @@ const routes: Routes = [
     path: 'all-employee',
     pathMatch: 'full',
     component: EmployeeComponent,
+    canActivate: [AuthGuard],
   },
 ];
 @NgModule({
