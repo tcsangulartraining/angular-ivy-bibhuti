@@ -20,6 +20,9 @@ export class LoginComponent implements OnInit {
     return this.loginForm.controls;
   }
   ngOnInit() {
+    if (this.authService.isLogin()) {
+      this.router.navigate(['/']);
+    }
     this.loginForm = this.formBuilder.group({
       email: [
         '',
