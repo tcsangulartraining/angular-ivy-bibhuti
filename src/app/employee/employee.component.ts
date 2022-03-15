@@ -8,10 +8,9 @@ import {
   AfterViewInit,
 } from '@angular/core';
 import { Employee } from './employee.model';
-import { AppState } from './../app.state';
-import { Store } from '@ngrx/store';
+
 import { Observable } from 'rxjs';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
 import { DynamicComponent } from '../dynamic/dynamic.component';
 
 @Component({
@@ -24,17 +23,12 @@ export class EmployeeComponent implements AfterViewInit, OnInit {
   container!: ViewContainerRef;
   employees: Observable<Employee[]>;
 
-  constructor(
-    private store: Store<AppState>,
-    private componentFactoryResolver: ComponentFactoryResolver
-  ) {
-    //this.employees = this.store.select((state) => state.employee);
-  }
+  constructor(private componentFactoryResolver: ComponentFactoryResolver) {}
 
   ngOnInit() {
     setTimeout(() => {
       this.loadInitialData();
-    }, 1000);
+    }, 100);
   }
   ngAfterViewInit() {
     //
