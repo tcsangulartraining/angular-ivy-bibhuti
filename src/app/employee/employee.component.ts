@@ -28,7 +28,7 @@ export class EmployeeComponent implements AfterViewInit, OnInit {
   ngOnInit() {
     setTimeout(() => {
       this.loadInitialData();
-    }, 100);
+    }, 1000);
   }
   ngAfterViewInit() {
     //
