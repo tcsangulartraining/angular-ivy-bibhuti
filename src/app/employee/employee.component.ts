@@ -35,6 +35,9 @@ export class EmployeeComponent implements OnInit {
   }
 
   loadInitialData() {
+    const viewContainerRef = this.container;
+    viewContainerRef.clear();
+
     // create the component factory
     const dynamicComponentFactory =
       this.componentFactoryResolver.resolveComponentFactory(DynamicComponent);
