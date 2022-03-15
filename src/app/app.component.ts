@@ -12,15 +12,7 @@ export class AppComponent {
   name = 'Employee form';
   isUserLoggedIn;
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor() {}
 
-  ngOnInit() {
-    if (this.authService.isLogin()) this.isUserLoggedIn = true;
-    else this.isUserLoggedIn = false;
-    //console.log(this.isUserLoggedIn);
-    // let storeData = localStorage.getItem('isUserLoggedIn');
-    // console.log('StoreData: ' + storeData);
-    // if (storeData != null && storeData == 'true') this.isUserLoggedIn = true;
-    // else this.isUserLoggedIn = false;
-  }
+  ngOnInit() {}
 }
