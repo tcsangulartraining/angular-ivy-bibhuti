@@ -16,6 +16,7 @@ import { HeaderComponent } from './header/header.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from './services/auth.service';
 import { LogoutComponent } from './logout/logout.component';
+import { DynamicComponent } from './dynamic/dynamic.component';
 
 @NgModule({
   imports: [
@@ -35,6 +36,7 @@ import { LogoutComponent } from './logout/logout.component';
     LoginComponent,
     LogoutComponent,
     HeaderComponent,
+    DynamicComponent,
   ],
   providers: [AuthService],
   bootstrap: [AppComponent],
