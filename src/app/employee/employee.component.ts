@@ -5,6 +5,7 @@ import {
   ViewChild,
   ElementRef,
   ViewContainerRef,
+  AfterViewInit,
 } from '@angular/core';
 import { Employee } from './employee.model';
 import { AppState } from './../app.state';
@@ -18,7 +19,7 @@ import { DynamicComponent } from '../dynamic/dynamic.component';
   templateUrl: './employee.component.html',
   styleUrls: ['./employee.component.css'],
 })
-export class EmployeeComponent implements OnInit {
+export class EmployeeComponent implements AfterViewInit, OnInit {
   @ViewChild('container', { read: ViewContainerRef })
   container!: ViewContainerRef;
   employees: Observable<Employee[]>;
@@ -30,11 +31,15 @@ export class EmployeeComponent implements OnInit {
     //this.employees = this.store.select((state) => state.employee);
   }
 
-  ngOnInit() {}
-  ngAfterViewInit() {
-    this.loadInitialData();
+  ngOnInit() {
+    setTimeout(() => {
+      this.loadInitialData();
+    }, 1000);
   }
-  loadInitialData() {
+  ngAfterViewInit() {
+    //
+  }
+  loadInitialData(): void {
     const viewContainerRef = this.container;
     viewContainerRef.clear();
 
