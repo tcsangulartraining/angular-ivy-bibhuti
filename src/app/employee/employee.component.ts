@@ -30,10 +30,10 @@ export class EmployeeComponent implements OnInit {
     //this.employees = this.store.select((state) => state.employee);
   }
 
-  ngOnInit() {
+  ngOnInit() {}
+  ngAfterViewInit() {
     this.loadInitialData();
   }
-
   loadInitialData() {
     const viewContainerRef = this.container;
     viewContainerRef.clear();
