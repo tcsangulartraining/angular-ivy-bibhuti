@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { environment } from '../../environments/environments';
 import {
   HttpInterceptor,
   HttpClient,
@@ -20,18 +21,19 @@ export class AuthService {
   isUserLoggedIn: boolean = false;
 
   authUser(user: any): Observable<any> {
-    this.isUserLoggedIn =
-      user.email == 'admin@gmail.com' && user.pwd == 'admin';
-    localStorage.setItem(
-      'isUserLoggedIn',
-      this.isUserLoggedIn ? 'true' : 'false'
-    );
-    console.log(user);
-    return of(this.isUserLoggedIn).pipe(
-      tap((val) => {
-        console.log('Is User Authentication is successful: ' + val);
-      })
-    );
+    // this.isUserLoggedIn =
+    //   user.email == 'admin@gmail.com' && user.pwd == 'admin';
+    // localStorage.setItem(
+    //   'isUserLoggedIn',
+    //   this.isUserLoggedIn ? 'true' : 'false'
+    // );
+    // console.log(user);
+    // return of(this.isUserLoggedIn).pipe(
+    //   tap((val) => {
+    //     console.log('Is User Authentication is successful: ' + val);
+    //   })
+    // );
+    return this.httpClient.post(environment.apiUrl + 'login', user);
   }
   isLogin() {
     return localStorage.getItem('isUserLoggedIn');

@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
           ),
         ],
       ],
-      pwd: ['', Validators.required],
+      password: ['', Validators.required],
     });
   }
   loginFormSubmit() {
@@ -51,11 +51,23 @@ export class LoginComponent implements OnInit {
       //   console.log('Login Failed');
       //   this.router.navigate(['/']);
       // }
-      this.authService.authUser(this.loginForm.value).subscribe((data) => {
-        console.log('Is Login Success: ' + data);
-
-        if (data) this.router.navigate(['/all-employee']);
-      });
+      this.authService.authUser(this.loginForm.value).subscribe(
+        (data) => {
+          if (data.login == false) {
+            console.log('Is Login failed: ', data);
+            localStorage.setItem('isUserLoggedIn', 'false');
+          } else {
+            console.log('Is Login Success: ', data);
+            localStorage.setItem('logginData', data);
+            localStorage.setItem('isUserLoggedIn', 'true');
+            this.router.navigate(['/all-employee']);
+          }
+          //if (data) this.router.navigate(['/all-employee']);
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
     }
   }
 }

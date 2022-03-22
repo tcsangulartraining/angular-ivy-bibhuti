@@ -23,17 +23,18 @@
           class="form-control"
           id="pwd"
           placeholder="Enter password"
-          formControlName="pwd"
+          formControlName="password"
         />
         <span
           class="error"
-          *ngIf="formWasSubmitted && loginFormData.pwd.invalid"
+          *ngIf="formWasSubmitted && loginFormData.password.invalid"
           >Please enter your password</span
         >
       </div>
 
       <button type="submit" class="btn btn-primary mt-3">Submit</button>
     </form>
-    Please use email as admin@gmail.com and password as admin for see the functionality
+    Please use email as admin@gmail.com and password as admin for see the
+    functionality
   </div>
 </div>
