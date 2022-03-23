@@ -2,8 +2,9 @@
   <div class="default-bg">
     <div class="col-md-12 col-sm-12">
       <h3 class="text-center">
-        Welcome back demo Application
-        <a *ngIf="isUserLoggedIn" class="c-white" href="/logout">Logout</a>
+        <a class="c-white" href="/">Home</a>&nbsp;
+        <span *ngIf="isUserLoggedIn">Welcome {{ username }}</span>
+        <a *ngIf="isUserLoggedIn" class="c-white" href="/logout"> Logout</a>
       </h3>
     </div>
   </div>

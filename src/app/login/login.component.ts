@@ -16,6 +16,7 @@ export class LoginComponent implements OnInit {
   ) {}
   public loginForm: FormGroup;
   public formWasSubmitted: boolean;
+  public loginErrorMessage: string = '';
   get loginFormData() {
     return this.loginForm.controls;
   }
@@ -40,29 +41,19 @@ export class LoginComponent implements OnInit {
     this.formWasSubmitted = true;
 
     if (this.loginForm.valid) {
-      // localStorage.setItem('Users', JSON.stringify(this.loginForm.value));
-      // const user = this.authService.authUser(this.loginForm.value);
-      // console.log(user);
-      // if (user) {
-      //   localStorage.setItem('isLoggin', 'true');
-      //   this.router.navigate(['/all-employee']);
-      // } else {
-      //   localStorage.setItem('isLoggin', 'false');
-      //   console.log('Login Failed');
-      //   this.router.navigate(['/']);
-      // }
       this.authService.authUser(this.loginForm.value).subscribe(
         (data) => {
           if (data.login == false) {
             console.log('Is Login failed: ', data);
             localStorage.setItem('isUserLoggedIn', 'false');
+            this.loginErrorMessage = data.msg;
+            this.router.navigate(['/']);
           } else {
             console.log('Is Login Success: ', data);
-            localStorage.setItem('logginData', data);
+            localStorage.setItem('logginData', JSON.stringify(data));
             localStorage.setItem('isUserLoggedIn', 'true');
             this.router.navigate(['/all-employee']);
           }
-          //if (data) this.router.navigate(['/all-employee']);
         },
         (err) => {
           console.log(err);

@@ -12,6 +12,7 @@ import { Employee } from './employee.model';
 import { Observable } from 'rxjs';
 
 import { DynamicComponent } from '../dynamic/dynamic.component';
+import { EmployeeService } from '../services/employee.service';
 
 @Component({
   selector: 'app-employee',
@@ -23,9 +24,15 @@ export class EmployeeComponent implements AfterViewInit, OnInit {
   container!: ViewContainerRef;
   employees: Observable<Employee[]>;
 
-  constructor(private componentFactoryResolver: ComponentFactoryResolver) {}
+  constructor(
+    private componentFactoryResolver: ComponentFactoryResolver,
+    public employeeService: EmployeeService
+  ) {}
 
   ngOnInit() {
+    this.employeeService.getAllEmployee().subscribe((data) => {
+      console.log(data);
+    });
     setTimeout(() => {
       this.loadInitialData();
     }, 1000);

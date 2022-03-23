@@ -13,10 +13,12 @@ import { EmployeeFormComponent } from './employee/employee-form/employee-form.co
 import { AppRoutingModule } from './app-routing.module';
 import { LoginComponent } from './login/login.component';
 import { HeaderComponent } from './header/header.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthService } from './services/auth.service';
 import { LogoutComponent } from './logout/logout.component';
 import { DynamicComponent } from './dynamic/dynamic.component';
+import { AuthInterceptor } from './interceptors/auth-interceptor';
+import { HttpErrorInterceptor } from './interceptors/http-error.interceptor';
 
 @NgModule({
   imports: [
@@ -38,7 +40,11 @@ import { DynamicComponent } from './dynamic/dynamic.component';
     HeaderComponent,
     DynamicComponent,
   ],
-  providers: [AuthService],
+  //providers: [AuthService],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

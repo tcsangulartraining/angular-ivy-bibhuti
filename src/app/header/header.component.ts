@@ -9,21 +9,35 @@ import { AuthService } from '../services/auth.service';
 })
 export class HeaderComponent implements OnInit {
   isUserLoggedIn;
-
+  username: string = '';
   constructor(private authService: AuthService, private router: Router) {
-    // router.events.subscribe((val) => {
-    //   // see also
-    //   console.log(val instanceof NavigationEnd);
-    // });
     const navEndEvent$ = router.events.pipe(
       filter((e) => e instanceof NavigationEnd)
     );
     navEndEvent$.subscribe((e: NavigationEnd) => {
       //console.log(e);
-      if (this.authService.isLogin()) this.isUserLoggedIn = true;
-      else this.isUserLoggedIn = false;
+      if (this.authService.isLogin() == 'true') {
+        this.isUserLoggedIn = true;
+        this.checkTokenExpiry(JSON.parse(localStorage.getItem('logginData')));
+      } else {
+        this.isUserLoggedIn = false;
+      }
     });
   }
-
+  checkTokenExpiry(data) {
+    //console.log(data);
+    this.username = data.first_name;
+    let token = data.token.split('.')[1];
+    token = atob(token);
+    let json = JSON.parse(token);
+    //console.log(json);
+    let exp = json.exp * 1000;
+    let current = Date.now();
+    if (exp < current) {
+      alert('Login session has been expired');
+      this.authService.logout();
+      this.router.navigate(['/']);
+    }
+  }
   ngOnInit() {}
 }
