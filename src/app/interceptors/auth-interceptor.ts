@@ -20,9 +20,10 @@ export class AuthInterceptor implements HttpInterceptor {
     // console.log('logged in',this.authService.isLogin());
     //console.log('requesturl ', request.url);
     //console.log('environmenturl',enviro)
+    //console.log(request);
     //Add Silent token renew///////////////////////
     if (
-      this.authService.isLogin() &&
+      this.authService.isLogin() == 'true' &&
       request.url.includes(environment.apiUrl)
     ) {
       request = request.clone({
@@ -32,7 +33,6 @@ export class AuthInterceptor implements HttpInterceptor {
         },
       });
     }
-
     return next.handle(request);
   }
 }

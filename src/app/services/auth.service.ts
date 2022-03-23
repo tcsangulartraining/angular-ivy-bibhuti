@@ -20,6 +20,7 @@ export class AuthService {
   constructor(private httpClient: HttpClient) {}
 
   authUser(user: any): Observable<any> {
+    console.log(user);
     return this.httpClient.post(environment.apiUrl + 'login', user);
   }
   isLogin() {
