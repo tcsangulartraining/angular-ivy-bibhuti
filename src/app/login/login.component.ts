@@ -39,7 +39,6 @@ export class LoginComponent implements OnInit {
   }
   loginFormSubmit() {
     this.formWasSubmitted = true;
-
     if (this.loginForm.valid) {
       this.authService.authUser(this.loginForm.value).subscribe(
         (data) => {
