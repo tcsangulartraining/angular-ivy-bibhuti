@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environments';
+import { Employee } from './../employee/employee.model';
 import {
   HttpInterceptor,
   HttpClient,
@@ -17,7 +18,27 @@ import { tap, delay } from 'rxjs/operators';
 })
 export class EmployeeService {
   constructor(private httpClient: HttpClient) {}
-  getAllEmployee(): Observable<any> {
-    return this.httpClient.get(environment.apiUrl + 'get-employee');
+  getAllEmployee(): Observable<Employee[]> {
+    return this.httpClient.get<Employee[]>(environment.apiUrl + 'employee');
+  }
+  createEmployee(employee: Employee): Observable<Employee> {
+    return this.httpClient.post<Employee>(
+      environment.apiUrl + 'employee',
+      employee
+    );
+  }
+
+  deleteEmployee(employeeId: string): Observable<any> {
+    return this.httpClient.delete(environment.apiUrl + 'employee' + employeeId);
+  }
+
+  updateEmployee(
+    employeeId: string | number,
+    changes: Partial<Employee>
+  ): Observable<any> {
+    return this.httpClient.put(
+      environment.apiUrl + 'employee' + employeeId,
+      changes
+    );
   }
 }

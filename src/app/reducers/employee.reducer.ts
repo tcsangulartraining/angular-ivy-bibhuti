@@ -5,6 +5,7 @@ export const ADD_EMPLOYEE = 'ADD_EMPLOYEE';
 export const REMOVE_EMPLOYEE = 'REMOVE_EMPLOYEE';
 
 const initialState: Employee = {
+  id: 'asd-asd-asd-asd',
   fname: 'Bibhuti',
   lname: 'Satpathy',
   email: 'bibhuti@gmail.com',

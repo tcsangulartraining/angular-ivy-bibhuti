@@ -13,6 +13,8 @@
     "@angular/router": "^13.3.0",
     "@ngrx/core": "^1.2.0",
     "@ngrx/effects": "^13.0.2",
+    "@ngrx/entity": "^13.0.2",
+    "@ngrx/schematics": "^13.0.2",
     "@ngrx/store": "^13.0.2",
     "@popperjs/core": "^2.11.4",
     "bootstrap": "^5.1.3",
