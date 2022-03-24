@@ -14,14 +14,14 @@ export interface EmployeeState extends EntityState<Employee> {
 export const adapter: EntityAdapter<Employee> = createEntityAdapter<Employee>();
 
 export const initialState = adapter.getInitialState({
-  coursesLoaded: false,
+  employeeLoaded: false,
 });
 
 export const employeeReducer = createReducer(
   initialState,
 
   on(employeeActionTypes.employeeLoaded, (state, action) => {
-    return adapter.setAll(action.employees, { ...state, coursesLoaded: true });
+    return adapter.setAll(action.employees, { ...state, employeeLoaded: true });
   }),
 
   on(employeeActionTypes.createEmployee, (state, action) => {

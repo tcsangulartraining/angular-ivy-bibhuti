@@ -10,10 +10,10 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Injectable()
-export class CourseEffects {
+export class EmployeeEffects {
   loadEmployee$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(employeeActionTypes.loadCourses),
+      ofType(employeeActionTypes.loadEmployee),
       concatMap(() => this.employeeService.getAllEmployee()),
       map((employees) => employeeActionTypes.employeeLoaded({ employees }))
     )

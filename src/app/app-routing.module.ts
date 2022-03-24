@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from './auth.guard';
 import { EmployeeComponent } from './employee/employee.component';
+import { EmployeeResolver } from './employee/employee.resolver';
 import { LoginComponent } from './login/login.component';
 import { LogoutComponent } from './logout/logout.component';
 
@@ -15,8 +16,10 @@ const routes: Routes = [
   { path: 'logout', component: LogoutComponent },
   {
     path: 'all-employee',
-    pathMatch: 'full',
     component: EmployeeComponent,
+    resolve: {
+      employees: EmployeeResolver,
+    },
     canActivate: [AuthGuard],
   },
 ];

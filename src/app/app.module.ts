@@ -19,8 +19,9 @@ import { LogoutComponent } from './logout/logout.component';
 import { DynamicComponent } from './dynamic/dynamic.component';
 import { AuthInterceptor } from './interceptors/auth-interceptor';
 import { HttpErrorInterceptor } from './interceptors/http-error.interceptor';
-// import { EffectsModule } from '@ngrx/effects/src';
-// import { reducers, metaReducers } from './store/reducers';
+import { EffectsModule } from '@ngrx/effects/src';
+import { reducers, metaReducers } from './store/reducers';
+import { EmployeeModule } from './employee/employee.module';
 //import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 @NgModule({
@@ -30,7 +31,8 @@ import { HttpErrorInterceptor } from './interceptors/http-error.interceptor';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    StoreModule.forRoot({ employee: addEmployeeReducer }),
+    EmployeeModule,
+    //StoreModule.forRoot({ employee: addEmployeeReducer }),
     AppRoutingModule,
     // EffectsModule.forRoot([]),
     // StoreModule.forRoot(reducers, {
@@ -41,12 +43,12 @@ import { HttpErrorInterceptor } from './interceptors/http-error.interceptor';
   declarations: [
     AppComponent,
     HelloComponent,
-    EmployeeComponent,
-    EmployeeFormComponent,
+    // EmployeeComponent,
+    // EmployeeFormComponent,
     LoginComponent,
     LogoutComponent,
     HeaderComponent,
-    DynamicComponent,
+    //DynamicComponent,
   ],
   //providers: [AuthService],
   providers: [
