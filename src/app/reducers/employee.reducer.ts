@@ -17,10 +17,6 @@ const initialState: Employee = {
 
 export function addEmployeeReducer(state: Employee[] = [initialState], action) {
   switch (action.type) {
-    // case EmployeeActions.GET_EMPLOYEE:
-    //   return { ...state, loading: true };
-    // case EmployeeActions.GET_EMPLOYEE_SUCCESS:
-    //   return { ...state, ...action.payload, loading: false };
     case ADD_EMPLOYEE:
       return [...state, action.payload];
     case REMOVE_EMPLOYEE:
