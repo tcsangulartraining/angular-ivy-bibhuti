@@ -15,7 +15,7 @@ const initialState: Employee = {
   phone: 1234569870,
 };
 
-export function addEmployeeReducer(state: Employee[initialState], action) {
+export function addEmployeeReducer(state: Employee[] = [initialState], action) {
   switch (action.type) {
     // case EmployeeActions.GET_EMPLOYEE:
     //   return { ...state, loading: true };
