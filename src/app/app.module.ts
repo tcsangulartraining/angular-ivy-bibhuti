@@ -23,6 +23,7 @@ import { EffectsModule } from '@ngrx/effects/src';
 import { reducers, metaReducers } from './store/reducers';
 
 import { EmployeeResolver } from './employee/employee.resolver';
+import { EmployeeEffects } from './effects/employee.effects';
 //import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 @NgModule({
@@ -35,7 +36,7 @@ import { EmployeeResolver } from './employee/employee.resolver';
 
     StoreModule.forRoot({ employee: addEmployeeReducer }),
     AppRoutingModule,
-    //EffectsModule.forRoot([]),
+    //EffectsModule.forRoot([EmployeeEffects]),
     // StoreModule.forRoot(reducers, {
     //   metaReducers,
     // }),
@@ -49,7 +50,7 @@ import { EmployeeResolver } from './employee/employee.resolver';
     LoginComponent,
     LogoutComponent,
     HeaderComponent,
-    //DynamicComponent,
+    DynamicComponent,
   ],
   //providers: [AuthService],
   providers: [
