@@ -21,7 +21,7 @@ import { AuthInterceptor } from './interceptors/auth-interceptor';
 import { HttpErrorInterceptor } from './interceptors/http-error.interceptor';
 import { EffectsModule } from '@ngrx/effects/src';
 import { reducers, metaReducers } from './store/reducers';
-import { EmployeeModule } from './employee/employee.module';
+
 import { EmployeeResolver } from './employee/employee.resolver';
 //import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
@@ -32,8 +32,8 @@ import { EmployeeResolver } from './employee/employee.resolver';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    EmployeeModule,
-    //StoreModule.forRoot({ employee: addEmployeeReducer }),
+
+    StoreModule.forRoot({ employee: addEmployeeReducer }),
     AppRoutingModule,
     //EffectsModule.forRoot([]),
     // StoreModule.forRoot(reducers, {
@@ -44,8 +44,8 @@ import { EmployeeResolver } from './employee/employee.resolver';
   declarations: [
     AppComponent,
     HelloComponent,
-    // EmployeeComponent,
-    // EmployeeFormComponent,
+    EmployeeComponent,
+    EmployeeFormComponent,
     LoginComponent,
     LogoutComponent,
     HeaderComponent,
@@ -53,7 +53,6 @@ import { EmployeeResolver } from './employee/employee.resolver';
   ],
   //providers: [AuthService],
   providers: [
-    EmployeeResolver,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true },
   ],

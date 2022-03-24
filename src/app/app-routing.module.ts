@@ -17,9 +17,6 @@ const routes: Routes = [
   {
     path: 'all-employee',
     component: EmployeeComponent,
-    resolve: {
-      employees: EmployeeResolver,
-    },
     canActivate: [AuthGuard],
   },
 ];
