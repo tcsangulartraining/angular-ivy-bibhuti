@@ -1,7 +1,7 @@
 import { EmployeeEffects } from './store/employee.effects';
 import { EmployeeService } from '../services/employee.service';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 
 import { StoreModule } from '@ngrx/store';
@@ -16,6 +16,7 @@ import { DynamicComponent } from '../dynamic/dynamic.component';
   imports: [
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     StoreModule.forFeature('employees', employeeReducer),
     EffectsModule.forFeature([EmployeeEffects]),
   ],

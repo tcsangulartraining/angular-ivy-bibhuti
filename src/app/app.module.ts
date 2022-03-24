@@ -22,6 +22,7 @@ import { HttpErrorInterceptor } from './interceptors/http-error.interceptor';
 import { EffectsModule } from '@ngrx/effects/src';
 import { reducers, metaReducers } from './store/reducers';
 import { EmployeeModule } from './employee/employee.module';
+import { EmployeeResolver } from './employee/employee.resolver';
 //import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 @NgModule({
@@ -52,6 +53,7 @@ import { EmployeeModule } from './employee/employee.module';
   ],
   //providers: [AuthService],
   providers: [
+    EmployeeResolver,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true },
   ],
