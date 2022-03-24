@@ -21,6 +21,7 @@ import { AuthInterceptor } from './interceptors/auth-interceptor';
 import { HttpErrorInterceptor } from './interceptors/http-error.interceptor';
 import { EffectsModule } from '@ngrx/effects/src';
 import { reducers, metaReducers } from './store/reducers';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 @NgModule({
   imports: [
@@ -35,6 +36,7 @@ import { reducers, metaReducers } from './store/reducers';
     StoreModule.forRoot(reducers, {
       metaReducers,
     }),
+    StoreDevtoolsModule.instrument({ maxAge: 25 }),
   ],
   declarations: [
     AppComponent,
