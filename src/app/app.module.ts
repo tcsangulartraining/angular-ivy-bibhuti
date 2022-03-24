@@ -35,7 +35,7 @@ import { EmployeeResolver } from './employee/employee.resolver';
     EmployeeModule,
     //StoreModule.forRoot({ employee: addEmployeeReducer }),
     AppRoutingModule,
-    // EffectsModule.forRoot([]),
+    EffectsModule.forRoot([]),
     // StoreModule.forRoot(reducers, {
     //   metaReducers,
     // }),
